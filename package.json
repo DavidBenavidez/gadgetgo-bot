@@ -24,7 +24,8 @@
     "mongoose": "^5.1.5",
     "request": "^2.87.0",
     "restify": "^7.2.1",
-    "string-format": "^2.0.0"
+    "string-format": "^2.0.0",
+    "yarn.lock": "^0.0.1-security"
   },
   "devDependencies": {
     "apidoc": "^0.17.6",
