@@ -8,7 +8,7 @@ var gadgets = [
     "Phone",
     "Mouse",
     "Headphones",
-    "TV"
+    "Speakers"
 ];
 
 module.exports = [

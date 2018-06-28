@@ -61,8 +61,11 @@ module.exports = [
                 carousel.push({
                     name: 'phone' + i,
                     title: session.conversationData.phones[i].model,
-                    text: '₱' + session.conversationData.phones[i].price,
-                    image: session.conversationData.phones[i].image
+                    text: '₱' + session.conversationData.phones[i].price.toFixed(2),
+                    image: session.conversationData.phones[i].image,
+                    button: [
+                        {url: session.conversationData.phones[i].link, btn_title: 'Check Specs'}
+                    ]
                 });
             }
             var cardName = card.getName(carousel);
