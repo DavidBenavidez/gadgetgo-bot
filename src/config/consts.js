@@ -1,7 +1,7 @@
 const builder = require('botbuilder');
 const dialogs = require('../dialogs');
 
-exports.PORT = process.env.PORT || 3978;
+exports.PORT = process.env.port || process.env.PORT || 3978;
 
 exports.prompts = {
     default: 

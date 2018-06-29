@@ -14,6 +14,7 @@ module.exports.getPhonesByBudget = async(price) => {
 }
 
 module.exports.getPhonesByCamera = async(price) => {
+    // https://gadgetgoserver.herokuapp.com
     // http://localhost:3001/api/get-phones-by-camera
     return request.get('https://gadgetgoserver.herokuapp.com/api/get-phones-by-camera', {
         params: {price: price}
