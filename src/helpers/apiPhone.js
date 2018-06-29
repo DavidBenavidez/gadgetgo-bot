@@ -2,7 +2,7 @@ var request = require('axios');
 var format = require('string-format');
 
 module.exports.getPhonesByBudget = async(price) => {
-    return request.get('http://localhost:3001/api/get-phones-by-budget', {
+    return request.get('https://gadgetgoserver.herokuapp.com/api/get-phones-by-budget', {
         params: { price: price }
     }).then(
         res => {
