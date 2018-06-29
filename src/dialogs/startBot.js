@@ -17,11 +17,8 @@ module.exports = [
         session.privateConversationData.currentDialog = '/start_bot';
         var cardName = card.getName(consts.cards.welcome);
         var msg = card(session, consts.cards.welcome, cardName);
-        var res= {first_name: "david"};
-        const rest = await fb.userProfile(session.message.user.id);
-    
-        var prompt = `Hi ${res.first_name}!, choose a gadget below:`; 
-        console.log(prompt);
+        var prompt = `Hi there!, choose a gadget below:`; 
+
         session.send(msg);
         builder.Prompts.choice(
             session, 
