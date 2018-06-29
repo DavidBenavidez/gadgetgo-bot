@@ -1,7 +1,7 @@
 var request = require('axios');
 var format = require('string-format');
 
-module.exports.getLaptopsByBudget = async(price) => {
+module.exports.getPhonesByBudget = async(price) => {
     return request.get('http://localhost:3001/api/get-laptops-by-budget', {
         params: { price: price }
     }).then(
@@ -13,8 +13,9 @@ module.exports.getLaptopsByBudget = async(price) => {
     });
 }
 
-module.exports.getLaptopsByRange = async(price) => {
-    return request.get('http://localhost:3001/api/get-laptops-by-range', {
+module.exports.getPhonesByCamera = async(price) => {
+    // http://localhost:3001/api/get-laptops-by-camera
+    return request.get('http://localhost:3001/api/get-laptops-by-camera', {
         params: {price: price}
     }).then(
         res => {
@@ -25,31 +26,26 @@ module.exports.getLaptopsByRange = async(price) => {
     });
 }
 
-module.exports.addLaptop = async(data) => {
-    var options = {
-        url: 'http://localhost:3001/api/add-laptop',
-        method: 'POST',
-        data: data
-    }
-    request(options)
-    .then(
-        res => res.data
-    )
-    .catch(err => {
-        console.log(err); 
+module.exports.getPhonesByDisplay = async(price) => {
+    return request.get('http://localhost:3001/api/get-laptops-by-display', {
+        params: {price: price}
+    }).then(
+        res => {
+            return JSON.stringify(res.data);
+        }
+    ) .catch(err => {
+        console.log(err);
     });
 }
 
-module.exports.clearLaptops = async() => {
-    var options = {
-        url: 'http://localhost:3001/api/clear-laptops',
-        method: 'DELETE'
-    }
-    request(options)
-    .then(
-        res => {}
-    )
-    .catch(err => {
-        console.log(err); 
+module.exports.getPhonesByBattery = async(price) => {
+    return request.get('http://localhost:3001/api/get-laptops-by-battery', {
+        params: {price: price}
+    }).then(
+        res => {
+            return JSON.stringify(res.data);
+        }
+    ) .catch(err => {
+        console.log(err);
     });
 }
