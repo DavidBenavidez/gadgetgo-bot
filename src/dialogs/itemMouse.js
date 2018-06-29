@@ -1,6 +1,5 @@
 const builder = require('botbuilder');
 const consts = require('../config/consts');
-const mouseAPI = require('../helpers/apiMouse');
 
 var categories = [
     "Casual",

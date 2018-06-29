@@ -1,6 +1,5 @@
 const builder = require('botbuilder');
 const consts = require('../config/consts');
-const laptopAPI = require('../helpers/apiLaptop');
 
 var categories = [
     "Gaming",

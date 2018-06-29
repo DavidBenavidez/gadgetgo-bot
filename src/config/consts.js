@@ -20,7 +20,7 @@ module.exports.cards = {
         {
             name: 'welcome',
             title: 'Easiest way to find you ideal gadgets.',
-            image: 'https://imgur.com/a/C4WsMiX'
+            image: 'https://i.imgur.com/d13KEeM.png'
         }
     ]
 }

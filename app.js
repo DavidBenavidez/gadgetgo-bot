@@ -1,7 +1,5 @@
 var restify = require('restify');
 var builder = require('botbuilder');
-
-const phoneAPI = require('./src/helpers/apiPhone');
 var routes = require("./src/routes");
 var consts = require("./src/config/consts");
 var config = require("./src/config/config");

@@ -2,7 +2,7 @@ var request = require('axios');
 var format = require('string-format');
 
 module.exports.getPhonesByBudget = async(price) => {
-    return request.get('https://gadgetgoserver.herokuapp.com/api/get-phones-by-budget', {
+    return request.get('https://gadgetgoservasder.herokuapp.com/api/get-phones-by-budget', {
         params: { price: price }
     }).then(
         res => {
@@ -14,9 +14,9 @@ module.exports.getPhonesByBudget = async(price) => {
 }
 
 module.exports.getPhonesByCamera = async(price) => {
-    // https://gadgetgoserver.herokuapp.com
-    // http://localhost:3001/api/get-phones-by-camera
-    return request.get('https://gadgetgoserver.herokuapp.com/api/get-phones-by-camera', {
+    // https://gadgetgoservasder.herokuapp.com
+    // http://localhost:3asd001/api/get-phones-by-camera
+    return request.get('https://gadgetgoservasder.herokuapp.com/api/get-phones-by-camera', {
         params: {price: price}
     }).then(
         res => {
@@ -28,7 +28,7 @@ module.exports.getPhonesByCamera = async(price) => {
 }
 
 module.exports.getPhonesByDisplay = async(price) => {
-    return request.get('https://gadgetgoserver.herokuapp.com/api/get-phones-by-display', {
+    return request.get('https://gadgetgoservasder.herokuapp.com/api/get-phones-by-display', {
         params: {price: price}
     }).then(
         res => {
@@ -40,7 +40,7 @@ module.exports.getPhonesByDisplay = async(price) => {
 }
 
 module.exports.getPhonesByBattery = async(price) => {
-    return request.get('https://gadgetgoserver.herokuapp.com/api/get-phones-by-battery', {
+    return request.get('https://gadgetgoservasder.herokuapp.com/api/get-phones-by-battery', {
         params: {price: price}
     }).then(
         res => {

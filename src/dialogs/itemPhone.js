@@ -37,7 +37,7 @@ module.exports = [
         session.conversationData.budget = consts.validateBudget(results.response.entity);
         builder.Prompts.choice(
             session,
-            "What's do you want most in your phone?",
+            "What do you want most in your phone?",
             categories,
             {listStyle: 3}
         );
