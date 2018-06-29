@@ -20,7 +20,7 @@ module.exports.cards = {
         {
             name: 'welcome',
             title: 'Easiest way to find you ideal gadgets.',
-            image: 'file:///home/david/Desktop/hungrybot/bot/assets/logo.png'
+            image: 'https://imgur.com/a/C4WsMiX'
         }
     ]
 }
