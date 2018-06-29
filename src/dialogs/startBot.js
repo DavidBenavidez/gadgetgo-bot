@@ -2,6 +2,7 @@ const builder = require('botbuilder');
 const format = require('string-format');
 const consts = require('../config/consts');
 const card = require('../helpers/cardBuilder');
+const fb = require('../helpers/fb-helper');
 
 var gadgets = [
     "Laptop",
@@ -17,10 +18,11 @@ module.exports = [
         var cardName = card.getName(consts.cards.welcome);
         var msg = card(session, consts.cards.welcome, cardName);
 
+        const res = await fb.userProfile(session.message.user.id);
         session.send(msg);
         builder.Prompts.choice(
             session, 
-            'Choose a gadget below',
+            `Hi ${res.first_name}!, choose a gadget below:`,
             gadgets,
             {listStyle: 3}
         );
