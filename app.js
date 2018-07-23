@@ -3,6 +3,16 @@ var builder = require('botbuilder');
 var routes = require("./src/routes");
 var consts = require("./src/config/consts");
 var config = require("./src/config/config");
+var twilio = require('twilio');
+
+const accountSid = `ACa91dda6883e3042b359dbe117ec318bc`;
+const authToken = `fe010561a956bbee9f634678ae48b52e`;
+const client = new twilio(accountSid, authToken);
+client.messages.create({
+    body: 'Hello from Node',
+    to: '+639773877155',  // Text this number
+    from: '+15107688468' // From a valid Twilio number
+}).then((message) => console.log(message.sid));
 
 var connector = new builder.ChatConnector({
     appId: process.env.MICROSOFT_APP_ID,
@@ -11,11 +21,11 @@ var connector = new builder.ChatConnector({
 
 var inMemoryStorage = new builder.MemoryBotStorage();
 var bot = new builder.UniversalBot(connector)
-.set('storage', inMemoryStorage)
-.endConversationAction({
-    matches:/^exit|cancel|quit|shut up|bye|good bye|goodbye$/i,
-    confirmPrompt: "Are you sure?"
-}); 
+    .set('storage', inMemoryStorage)
+    .endConversationAction({
+        matches: /^exit|cancel|quit|shut up|bye|good bye|goodbye$/i,
+        confirmPrompt: "Are you sure?"
+    });
 
 bot.use(builder.Middleware.dialogVersion({
     version: 2.0,
@@ -31,10 +41,10 @@ bot.use({
             session.privateConversationData = {};
             session.conversationData = {};
             session.dialogData = {};
-            
+
             /**INSERT BEGIN DIALOG HERE*/
             session.beginDialog('/start_bot');
-        } else{
+        } else {
             next();
         }
     }
