@@ -26,7 +26,8 @@ bot.use(builder.Middleware.sendTyping());
 
 bot.use({
     botbuilder: async (session, next) => {
-        console.log("MESSAGE" + session.message.text);
+        session.message.text = globeAPI.receiveMessage();
+        console.log("ASDSA" + session.message.text);
         var restart = /^restart|started|get started|start over|get_started/i.test(session.message.text);
         if (restart) {
             globeAPI.getToken();
