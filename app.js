@@ -5,6 +5,13 @@ var consts = require("./src/config/consts");
 var config = require("./src/config/config");
 var globeAPI = require("./src/helpers/globe-helper");
 
+const returnSend = (res, content = '') => {
+    const OK = 200;
+
+    res.set('Content-Type', 'text/html');
+    res.status(OK).send(content);
+};
+
 var connector = new builder.ChatConnector({
     appId: process.env.MICROSOFT_APP_ID,
     appPassword: process.env.MICROSOFT_APP_PASSWORD
@@ -26,8 +33,11 @@ bot.use(builder.Middleware.sendTyping());
 
 bot.use({
     botbuilder: async (session, next) => {
-        session.message.text = globeAPI.receiveMessage();
-        console.log("ASDSA" + session.message.text);
+        console.log('SESSION' + session);
+        return { status: 200 };
+        // session.message.text = globeAPI.receiveMessage();
+        // returnsend();
+        // console.log("ASDSA" + session.message.text);
         var restart = /^restart|started|get started|start over|get_started/i.test(session.message.text);
         if (restart) {
             globeAPI.getToken();
