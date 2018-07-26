@@ -1,9 +1,12 @@
-var restify = require('restify');
+// var restify = require('restify');
+var express = require('express');
 var builder = require('botbuilder');
 var routes = require("./src/routes");
 var consts = require("./src/config/consts");
 var config = require("./src/config/config");
 var globeAPI = require("./src/helpers/globe-helper");
+
+const server = express();
 
 const returnSend = (res, content = '') => {
     const OK = 200;
@@ -59,10 +62,10 @@ routes(bot, consts.bot);
 // Server Setup
 //=========================================================
 
-const server = restify.createServer({
-    name: config.name,
-    version: config.version
-});
+// const server = restify.createServer({
+//     name: config.name,
+//     version: config.version
+// });
 
 const logSMS = ({ messageId, senderAddress, message }) => {
     console.log(`------------------------------------------\nNew Message: ${messageId}\nFrom: ${senderAddress}\n${message}\n------------------------------------------`);
