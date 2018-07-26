@@ -122,7 +122,7 @@ const receive = async (req, res) => {
     returnSend(res);
 };
 
-server.post('/api/messages', receive);
+server.post('/api/messages/receive', receive);
 
 server.listen(config.port, () => {
     console.log(`Server started: ${server.name}@${config.version}`);
