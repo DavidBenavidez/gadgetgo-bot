@@ -11,8 +11,12 @@ module.exports.getToken = () => {
     });
 }
 
-module.exports.getUser = () => {
-    return request.get('https://globeserver.herokuapp.com/api/get-user').then(
+module.exports.getUser = (subscriber_number) => {
+    return request.get('https://globeserver.herokuapp.com/api/get-user', {
+        params: {
+            subscriber_number: subscriber_number
+        }
+    }).then(
         res => {
             return res.data;
         }

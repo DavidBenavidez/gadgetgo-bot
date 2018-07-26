@@ -41,6 +41,7 @@ const logSMS = ({ messageId, senderAddress, message }) => {
 
 const sendSMS = async (address, content) => {
     try {
+        console.log("ADDRESS " + address);
         let user = await globeAPI.getUser(address);
         console.log("USER" + user);
 
