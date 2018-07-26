@@ -93,7 +93,7 @@ const sendSMS = async (address, content) => {
 
 const receiver = async (req, res) => {
     let agenda = '';
-    console.log("BODY: " + req.body);
+    console.log("BODY: " + req);
     const [sms] = req.body.inboundSMSMessageList.inboundSMSMessage;
     logSMS(sms);
 
