@@ -17,14 +17,14 @@ server.use(bodyParser.json());
 const App = {
     name: 'SMS Bot',
     tokenizer: 'https://developer.globelabs.com.ph/oauth/access_token',
-    api_id: 'KBaBFxB4MkfjgTBrd5i4oyfExBR8F7KE', // API Id
-    app_secret: 'e465668ed8b871061cbc0f27db9f25815b6990f2fc7e70d107bf5f1eb19d948c', // App secret
-    senderAddress: 4886, // last 4 digits of provider number
+    api_id: ' KnpbF84RKpu4RcoBq4TRaxuGznG4FkX8', // API Id
+    app_secret: '0f7882fc616a2a877c7ea7441e9e311463c10a70c331fd640546e0be5dd4bdb8', // App secret
+    senderAddress: 1179, // last 4 digits of provider number
     developer: { // dev contact for reports
         contact: '',
         name: 'David'
     },
-    SEND_SMS: token => `https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/4886/requests?access_token=${token}`
+    SEND_SMS: token => `https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/1179/requests?access_token=${token}`
 }
 
 const SEND_SMS = (address, message) => ({
