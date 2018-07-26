@@ -33,8 +33,6 @@ bot.use(builder.Middleware.sendTyping());
 
 bot.use({
     botbuilder: async (session, next) => {
-        console.log('SESSION' + session);
-        return { status: 200 };
         // session.message.text = globeAPI.receiveMessage();
         // returnsend();
         // console.log("ASDSA" + session.message.text);
@@ -66,7 +64,49 @@ const server = restify.createServer({
     version: config.version
 });
 
+const logSMS = ({ messageId, senderAddress, message }) => {
+    console.log(`------------------------------------------\nNew Message: ${messageId}\nFrom: ${senderAddress}\n${message}\n------------------------------------------`);
+}
+
+const SEND_SMS = (address, message) => ({
+    outboundSMSMessageRequest: {
+        senderAddress: App.senderAddress,
+        outboundSMSTextMessage: { message },
+        address
+    }
+});
+
+const sendSMS = async (address, content) => {
+    try {
+        console.log("AM IN");
+        let user = await globeAPI.getUser(address);
+        console.log("UTHER " + user);
+        const { access_token } = user;
+        const { data } = await axios.post(App.SEND_SMS(access_token), SEND_SMS(address, content.trim()));
+
+        console.log(`Successfully sent SMS to ${address}`);
+    } catch (err) {
+        console.log(`Failure to send SMS to ${address}`);
+        console.log(err);
+    }
+}
+
+const receiver = async (req, res) => {
+    let agenda = '';
+    const [sms] = req.body.inboundSMSMessageList.inboundSMSMessage;
+    logSMS(sms);
+
+    let { senderAddress } = sms;
+    let { message } = sms;
+    senderAddress = senderAddress.slice(7);
+
+    sendSMS(senderAddress, `Message Received!\nYour message was ${message}`);
+    connector.listen()
+    returnSend(res);
+};
+
 server.post('/api/messages', connector.listen());
+server.post('/api/messages/receive', receiver);
 
 server.listen(config.port, () => {
     console.log(`Server started: ${server.name}@${config.version}`);
