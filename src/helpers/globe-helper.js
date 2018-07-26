@@ -14,7 +14,7 @@ module.exports.getToken = () => {
 module.exports.getUser = () => {
     return request.get('https://globeserver.herokuapp.com/api/get-user').then(
         res => {
-            return JSON.stringify(res.data);
+            return res.data;
         }
     ).catch(err => {
         console.log(err);

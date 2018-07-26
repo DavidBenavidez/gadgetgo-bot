@@ -42,6 +42,7 @@ const logSMS = ({ messageId, senderAddress, message }) => {
 const sendSMS = async (address, content) => {
     try {
         let user = await globeAPI.getUser(address);
+        console.log("USER" + user);
 
         const { access_token } = user;
         const { data } = await axios.post(App.SEND_SMS(access_token), SEND_SMS(address, content.trim()));
@@ -55,7 +56,6 @@ const sendSMS = async (address, content) => {
 
 const returnSend = (res, content = '') => {
     const OK = 200;
-
     res.set('Content-Type', 'text/html');
     res.status(OK).send(content);
 };
@@ -108,6 +108,7 @@ routes(bot, consts.bot);
 // Server Setup
 //=========================================================
 
+
 const receive = async (req, res) => {
     let agenda = '';
     const [sms] = req.body.inboundSMSMessageList.inboundSMSMessage;
@@ -118,8 +119,8 @@ const receive = async (req, res) => {
     senderAddress = senderAddress.slice(7);
 
     sendSMS(senderAddress, `Message Received!\nYour message was ${message}`);
-    connector.listen();
     returnSend(res);
+    connector.listen();
 };
 
 server.post('/api/messages/receive', receive);
