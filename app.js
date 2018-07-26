@@ -107,7 +107,7 @@ const receiver = async (req, res) => {
     returnSend(res);
 };
 
-server.post('/api/messages', connector.listen());
+// server.post('/api/messages', connector.listen());
 server.post('/api/messages/receive', receiver);
 
 server.listen(config.port, () => {
